@@ -27,7 +27,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         initComponents();
     }
     
-    //Constructor que permite mostrar el menu//
+    //Consrrrrrrrrrrrrrrrrrrrrrrrrrr que permite mostrar el menu//
     public AgregarProducto(javax.swing.JMenuBar menu) {
         initComponents();
         men = menu;
@@ -208,6 +208,9 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         setVisible(false);
         men.show();
+        
+        
+        
         
         
     }//GEN-LAST:event_BtnCancelarActionPerformed
