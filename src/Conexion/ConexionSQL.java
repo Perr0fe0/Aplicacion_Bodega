@@ -5,10 +5,10 @@
  */
 package Conexion;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
@@ -25,53 +25,60 @@ public class ConexionSQL {
     
     Connection conectar=null;
     
-    /*//Conexion a la bd bodega
-    private static String DRIVER= "com.mysql.cj.jdbc.Driver";
-    private static String USUARIO= "mi_credencial";
-    private static String PASSWORD= "12345678";
-    private static String URL= "jdbc:mysql://database-1.ce0nhwtoznll.us-east-1.rds.amazonaws.com";*/
+
+//    private static String DRIVER= "com.mysql.cj.jdbc.Driver";
+//    private static String USUARIO= "root";
+//    private static String PASSWORD= "";
+//    private static String URL= "jdbc:mysql://localhost/bodega";
+//    
+//    
+//    
+//    
+//    public Connection conexion(){
+//        
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            conectar= (Connection) DriverManager.getConnection(URL, USUARIO, PASSWORD);
+//            
+//            JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+//            
+//            
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos! "+ e.getMessage());
+//        }
+//        return conectar;
+//    
+//    }
     
     
-    
-    /*public Connection conexion(){
-        
+       public static Connection conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/test","root","perrofeo");
-            
-            JOptionPane.showMessageDialog(null, "Conexion exitosa!");
-            
-            
+            Connection conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/bodega","root","");
+            JOptionPane.showMessageDialog(null, "Connected to Database");
+            return conectar;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos! "+ e.getMessage());
+            JOptionPane.showMessageDialog(null, e);
+            return null;
         }
-        return conectar;
-    
-    }*/
-    
-     public Connection conexion(){
-        
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://database-1.ce0nhwtoznll.us-east-1.rds.amazonaws.com/Bodega", "mi_credencial","12345678");
-            
-            JOptionPane.showMessageDialog(null, "Conexion exitosa!");
-            
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos! "+ e.getMessage());
-        }
-        return conectar;
-    
     }
-     
-     public ResultSet resultado;
-     public Statement sentencia;
-
-
     
-    
-   
+//     public Connection conexion(){
+//        
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/bodega", "root","");
+//            
+//            JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+//            
+//            
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos! "+ e.getMessage());
+//        }
+//        return conectar;
+//    
+//    }
+ 
 }
     
 

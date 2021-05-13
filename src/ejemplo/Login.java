@@ -7,7 +7,10 @@ package ejemplo;
 
 import javax.swing.JOptionPane;
 import Conexion.ConexionSQL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -38,7 +41,7 @@ public class Login extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnRegistro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,10 +68,10 @@ public class Login extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButton2.setText("Recuperar contraseña");
 
-        jButton3.setText("Registrarse");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistro.setText("Registrarse");
+        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnRegistroActionPerformed(evt);
             }
         });
 
@@ -93,9 +96,9 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnRegistro)))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +118,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(btnRegistro))
                 .addGap(133, 133, 133))
         );
 
@@ -132,9 +135,11 @@ public class Login extends javax.swing.JFrame {
             con.conexion();
             
             String SQL = "SELECT run, nombre FROM Empleado WHERE nombre='"+u+"' AND contrasenia='"+p+"'";
-            con.resultado = con.sentencia.executeQuery(SQL);
+            Statement s = con.conexion().createStatement();
+            ResultSet query = s.executeQuery(SQL);
             
-            if (con.resultado.next()) {
+            if (query.next()) {
+                JOptionPane.showMessageDialog(null, "Has iniciado sesion!");
                 setVisible(false);
                 Principal menu = new Principal();
                 menu.setVisible(true);
@@ -144,19 +149,23 @@ public class Login extends javax.swing.JFrame {
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
+        }    
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        Registro r = new Registro();
-        r.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.setVisible(false);
+        VerDespacho reg = new VerDespacho();
+        reg.setVisible(true);
+    }//GEN-LAST:event_btnRegistroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,9 +203,9 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRegistro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

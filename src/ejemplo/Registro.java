@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class Registro extends javax.swing.JPanel {
 
     ConexionSQL cc = new ConexionSQL();
-    Connection con = cc.conexion();
+    
     
     /**
      * Creates new form Registro
@@ -28,6 +28,7 @@ public class Registro extends javax.swing.JPanel {
     
     public void AgregarUsuario(){
         String pass = String.valueOf(txtPass.getPassword());
+        Connection con = cc.conexion();
         String SQL = "INSERT INTO Empleado (rut, nombre, contrasenia) values(?,?,?)";
                 
         try {
@@ -35,7 +36,7 @@ public class Registro extends javax.swing.JPanel {
             
             pst.setString(1, txtRun.getText());
             pst.setString(2, txtNombre.getText());
-            pst.setString(3, pass);
+            pst.setString(3, txtPass.getText());
             
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro exitoso!");
