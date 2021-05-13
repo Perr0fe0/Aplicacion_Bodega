@@ -24,6 +24,8 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -150,7 +152,7 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }    
-        
+    
         
         
         
@@ -163,7 +165,7 @@ public class Login extends javax.swing.JFrame {
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        VerDespacho reg = new VerDespacho();
+        Registros reg = new Registros();
         reg.setVisible(true);
     }//GEN-LAST:event_btnRegistroActionPerformed
 

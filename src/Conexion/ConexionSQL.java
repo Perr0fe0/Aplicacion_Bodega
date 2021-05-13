@@ -55,7 +55,6 @@ public class ConexionSQL {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/bodega","root","");
-            JOptionPane.showMessageDialog(null, "Connected to Database");
             return conectar;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
