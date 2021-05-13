@@ -8,7 +8,6 @@ package Conexion;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import javax.swing.JOptionPane;
 
 
@@ -31,11 +30,11 @@ public class ConexionSQL {
     
     
     
-    /*public Connection conexion(){
+    public Connection conexion(){
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/test","root","perrofeo");
+            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/bodega","root","");
             
             JOptionPane.showMessageDialog(null, "Conexion exitosa!");
             
@@ -45,9 +44,9 @@ public class ConexionSQL {
         }
         return conectar;
     
-    }*/
+    }
     
-     public Connection conexion(){
+     /*public Connection conexion(){
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -62,7 +61,7 @@ public class ConexionSQL {
         return conectar;
     
     }
-
+*/
 
     
     
