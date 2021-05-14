@@ -59,6 +59,7 @@ public class Principal extends javax.swing.JFrame {
 
         jMenu1.setText("Producto");
 
+        Agregarproducto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.SHIFT_MASK));
         Agregarproducto.setText("Agregar producto");
         Agregarproducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
