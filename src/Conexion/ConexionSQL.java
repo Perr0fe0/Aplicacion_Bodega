@@ -47,19 +47,34 @@ public class ConexionSQL {
 //            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos! "+ e.getMessage());
 //        }
 //        return conectar;
-//    
+//          //localhost:3306/bodega","root",""
 //    }
     
     
-       public static Connection conexion(){
+//       public static Connection conexion(){
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            Connection conectar = DriverManager.getConnection("jdbc:mysql://database-1.ce0nhwtoznll.us-east-1.rds.amazonaws.com/Bodega\", \"mi_credencial\",\"12345678");
+//            return conectar;
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, e);
+//            return null;
+//        }
+//    }
+       
+       
+    public Connection conexion(){
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conectar = DriverManager.getConnection("jdbc:mysql://localhost:3306/bodega","root","");
-            return conectar;
+            conectar = (Connection) DriverManager.getConnection("jdbc:mysql://database-1.ce0nhwtoznll.us-east-1.rds.amazonaws.com/Bodega", "mi_credencial","12345678");
+
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-            return null;
+            JOptionPane.showMessageDialog(null, "Error al conectar a la base de datos! "+ e.getMessage());
         }
+        return conectar;
+
     }
     
 //     public Connection conexion(){

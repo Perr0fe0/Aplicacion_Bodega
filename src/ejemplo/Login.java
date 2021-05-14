@@ -69,6 +69,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jButton2.setText("Recuperar contraseña");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         btnRegistro.setText("Registrarse");
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +173,13 @@ public class Login extends javax.swing.JFrame {
         Registros reg = new Registros();
         reg.setVisible(true);
     }//GEN-LAST:event_btnRegistroActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+//        this.setVisible(false);
+//        RecuperarContra rec = new RecuperarContra();
+//        rec.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
