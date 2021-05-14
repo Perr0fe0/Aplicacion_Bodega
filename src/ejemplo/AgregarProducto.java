@@ -93,17 +93,18 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaDescripcion = new javax.swing.JTextArea();
+        jLabel13 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setClosable(true);
         setForeground(new java.awt.Color(0, 0, 0));
+        setIconifiable(true);
         setTitle("Agregar Producto");
+        setVisible(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Descripción:");
@@ -148,7 +149,7 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
                 BtnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 210, 41));
+        getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 210, 41));
 
         jLabel8.setText("Código producto:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, -1));
@@ -167,10 +168,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel9.setText("$");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 10, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jLabel11.setText("0.01");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 450, 60, 10));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
@@ -192,6 +189,10 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTextAreaDescripcion);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 260, 200));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
+        jLabel13.setText("0.01");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 440, 60, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -228,8 +229,8 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
