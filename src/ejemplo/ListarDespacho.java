@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package ejemplo;
+import Conexion.ConexionSQL;
+import com.mysql.cj.protocol.Resultset;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,6 +21,9 @@ public class ListarDespacho extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarProducto
      */
+    
+    ConexionSQL cc = new ConexionSQL();
+    Connection con =cc.conexion();
     private javax.swing.JMenuBar men;
     public ListarDespacho() {
         initComponents();
@@ -22,6 +32,7 @@ public class ListarDespacho extends javax.swing.JInternalFrame {
     public ListarDespacho(javax.swing.JMenuBar menu) {
         initComponents();
         men = menu;
+        listarDespacho();
         
     }
 
@@ -38,9 +49,11 @@ public class ListarDespacho extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        TablaDespachos = new javax.swing.JTable();
         BtnCerrar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        ListarDespacho = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldBuscar = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,70 +82,7 @@ public class ListarDespacho extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setTitle("Lista de despachos");
-
-        TablaDespachos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "N°Despacho", "N° Boleta", "RUN", "Nombre", "Apellidos", "Producto", "Cantidad", "Direccion", "Estado"
-            }
-        ));
-        TablaDespachos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaDespachosMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(TablaDespachos);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnCerrar.setBackground(new java.awt.Color(255, 102, 102));
         BtnCerrar.setText("Cerrar");
@@ -141,54 +91,137 @@ public class ListarDespacho extends javax.swing.JInternalFrame {
                 BtnCerrarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 150, 33));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        ListarDespacho.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane4.setViewportView(ListarDespacho);
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 11, 930, 562));
+
+        jLabel1.setText("Buscar por nombre");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 30));
+
+        jTextFieldBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscarKeyReleased(evt);
+            }
+        });
+        getContentPane().add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 114, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    
+    
+    
+    public void listarDespacho(){
+        
+        String[] titulos={"ID Despacho","Nº Boleta","RUN","Nombre","Apellido","Producto","Cantidad","Direccion","Estado"};
+        String[] registros = new String[9];
+        DefaultTableModel modelo = new DefaultTableModel(null, titulos);
+        
+        String SQL="select * from Despacho";
+        
+        try {
+            
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery(SQL);
+            
+            
+            while(rs.next()){
+                
+                registros[0]=rs.getString("idDespacho");
+                registros[1]=rs.getString("n_boleta");
+                registros[2]=rs.getString("run");
+                registros[3]=rs.getString("nombre");
+                registros[4]=rs.getString("apellido");
+                registros[5]=rs.getString("producto");
+                registros[6]=rs.getString("cantidad");
+                registros[7]=rs.getString("direccion");
+                registros[8]=rs.getString("estado");
+                
+                modelo.addRow(registros);
+                
+                ListarDespacho.setModel(modelo);
+            
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error al cargar los datos "+ e.getMessage());
+        }
+    }
+    
+    
+   public void BuscarDespacho(String Dato){
 
-    private void TablaDespachosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaDespachosMouseClicked
-       //jTable1.getSelectedRows();
-       ListarProductos abrirVentanas = new ListarProductos();
-       
-               
-    }//GEN-LAST:event_TablaDespachosMouseClicked
+        String[] titulos={"ID Despacho","Nº Boleta","RUN","Nombre","Apellido","Producto","Cantidad","Direccion","Estado"};
+        String[] registros = new String[9];
+        DefaultTableModel modelo = new DefaultTableModel(null, titulos);
 
+        String SQL="select * from Despacho where nombre like '%"+Dato+"%'";
+
+        try {
+
+            Statement st=con.createStatement();
+            ResultSet rs=st.executeQuery(SQL);
+
+
+            while(rs.next()){
+
+                registros[0]=rs.getString("idDespacho");
+                registros[1]=rs.getString("n_boleta");
+                registros[2]=rs.getString("run");
+                registros[3]=rs.getString("nombre");
+                registros[4]=rs.getString("apellido");
+                registros[5]=rs.getString("producto");
+                registros[6]=rs.getString("cantidad");
+                registros[7]=rs.getString("direccion");
+                registros[8]=rs.getString("estado");
+
+                modelo.addRow(registros);
+
+                ListarDespacho.setModel(modelo);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error al cargar los datos "+ e.getMessage());
+        }
+    }
+    
+    
     private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
         // TODO add your handling code here:
         setVisible(false);
         men.show();
     }//GEN-LAST:event_BtnCerrarActionPerformed
 
+    private void jTextFieldBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarKeyReleased
+        // TODO add your handling code here:
+        BuscarDespacho(jTextFieldBuscar.getText());
+    }//GEN-LAST:event_jTextFieldBuscarKeyReleased
+
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrar;
-    private javax.swing.JTable TablaDespachos;
+    private javax.swing.JTable ListarDespacho;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTextField jTextFieldBuscar;
     // End of variables declaration//GEN-END:variables
 }

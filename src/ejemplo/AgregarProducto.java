@@ -42,7 +42,6 @@ public class AgregarProducto extends javax.swing.JInternalFrame {
         txtUnitario.setText("");
         txtMarca.setText("");
         jTextAreaDescripcion.setText("");
-        
     }
     public void AgregarDatos(){
     
